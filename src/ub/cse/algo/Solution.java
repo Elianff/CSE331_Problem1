@@ -62,13 +62,23 @@ public class Solution {
                 }
             }
 
-            Client currentClient = c;//c is client goal
-            while (currentBacktrack != 0) {
+            ArrayList<Integer> backTrackPath = new ArrayList<>();
+            int currentClient = c.id; //start from client
 
+            //backtrack from client to ISP
+            while (currentClient != startNode) {
+                backTrackPath.add(0,currentClient);
+                currentClient = backTrack.get(currentClient);
             }
-            //add paths to sol.paths
+
+            backTrackPath.add(0,startNode); //add ISP at front
+            paths.put(c.id, backTrackPath);
+
         }
 
+        //add paths to sol.paths
+        sol.paths = paths;
+        return sol;
 
     }
 }
