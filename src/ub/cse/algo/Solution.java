@@ -38,20 +38,19 @@ public class Solution {
 
         SolutionObject sol = new SolutionObject();
         /* TODO: Your solution goes here */
+        HashMap<Integer, ArrayList<Integer>> paths = new HashMap<>(); //add path to sol.paths
+
         for (Client c: clients) {
             Queue<Integer> todo = new LinkedList<>();
             HashSet<Integer> visited = new HashSet<>();
-
-
-            HashMap<Integer, ArrayList<Integer>> paths = new HashMap<>(); //add path to sol.paths
             HashMap<Integer, Integer> backTrack = new HashMap<>(); //map to backtrace path
 
-            int key = 0; //Need to locate starting node
+            int key = graph.contentProvider; //Need to locate starting node
             todo.add(key);
             visited.add(key);
             while (!todo.isEmpty()) {
                 int currentNode = todo.poll();
-                ArrayList<Integer> neighbors = graph.get(key);  //neighbors of nodes
+                ArrayList<Integer> neighbors = graph.get(currentNode);  //neighbors of nodes
 
                 for (int n : neighbors) {
                     if (!(visited.contains(n))) {
