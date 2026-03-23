@@ -48,7 +48,6 @@ public class Solution {
             int key = graph.contentProvider; //Need to locate starting node
             todo.add(key);
             visited.add(key);
-
             while (!todo.isEmpty()) {
                 int currentNode = todo.poll();
                 ArrayList<Integer> neighbors = graph.get(currentNode);  //neighbors of nodes
