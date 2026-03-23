@@ -45,9 +45,10 @@ public class Solution {
             HashSet<Integer> visited = new HashSet<>();
             HashMap<Integer, Integer> backTrack = new HashMap<>(); //map to backtrace path
 
-            int key = graph.contentProvider; //Need to locate starting node
-            todo.add(key);
-            visited.add(key);
+            int startNode = graph.contentProvider; //Need to locate starting node
+            todo.add(startNode);
+            visited.add(startNode);
+
             while (!todo.isEmpty()) {
                 int currentNode = todo.poll();
                 ArrayList<Integer> neighbors = graph.get(currentNode);  //neighbors of nodes
