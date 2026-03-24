@@ -63,6 +63,21 @@ public class Solution {
             }
 
             ArrayList<Integer> backTrackPath = new ArrayList<>();
+
+            //order payment from highest to least
+            ArrayList<Client> whichClientFirst= new ArrayList<>();
+            for(int i=0;i< clients.size();i++){
+                whichClientFirst.add(this.clients.get(i));
+            }
+            for (int i=1;i< whichClientFirst.size();i++){
+                if (whichClientFirst.get(i).payment>whichClientFirst.get(i-1).payment){
+                    Client curClient= whichClientFirst.get(i);
+                    Client prevClient= whichClientFirst.get(i-1);
+                    whichClientFirst.add(i-1,curClient);
+                    whichClientFirst.add(i,prevClient);
+                }
+            }
+
             int currentClient = c.id; //start from client
 
             //backtrack from client to ISP
